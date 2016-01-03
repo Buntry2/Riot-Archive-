@@ -1,0 +1,56 @@
+<%= erb :header %>
+
+<div id="search_movies_catalog">
+
+	<% @movies.each do |movie| %>
+		<a href="/movie/<%= movie['id'] %>" class= "search_movie_item_catalog" >
+			<% if movie['poster_path'].to_s.size != 0 %>
+				<img class="movie_index_img" src="<%= CONFIG.base_url.to_s + CONFIG.poster_sizes[1].to_s + movie['poster_path'].to_s %>">
+			<% else %>
+				<img class="movie_index_img" src="/img/error.png">
+			<% end %>
+		</a>
+	<% end %>
+
+</div>
+
+<div id="search_movies_list">
+	
+	<% @movies.each do |movie| %>
+		<div class="search_movie_item_list">
+			<div class="list_image">
+				<% if movie['poster_path'].to_s.size != 0 %>
+				<img class="movie_index_img" src="<%= CONFIG.base_url.to_s + CONFIG.poster_sizes[1].to_s + movie['poster_path'].to_s %>">
+			<% else %>
+				<img class="movie_index_img" src="/img/error.png">
+			<% end %>
+			</div>
+			<div class="list_info">
+				<p>
+					<a href="/movie/<%= movie['id'] %>"><%= "#{movie['title']}" %></a>
+					<%= " (#{movie['release_date'].split("-").first})" %>
+				</p>
+				<p>
+					Directors:
+					<% if !Tmdb::Movie.crew(movie['id']).nil? %>
+						<% Tmdb::Movie.crew(movie['id']).each do |crew| %>
+							<% if crew['department'] == 'Directing' %>
+								<a class="director"><%= crew['name'] %> </a> |
+							<% end %>
+						<% end %>
+					<% end %>
+				</p>
+				<p>
+					Starring:
+					<% if !Tmdb::Movie.casts(movie['id']).nil? %>
+						<% Tmdb::Movie.casts(movie['id']).first(3).each do |cast| %>
+							<a class="star"><%= cast['name'] %> </a> |
+						<% end %>
+					<% end %>
+				</p>
+			</div>
+		</div>
+	<% end %>
+	
+</div>
+

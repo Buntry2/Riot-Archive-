@@ -1,0 +1,50 @@
+<DOCTYPE html>
+<html>
+	<head>
+		
+		<title>Movie Reviews</title>
+		
+		<!-- Standard Meta Build -->
+		<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+       	<meta name="viewport" content="width=device-width, initial-scale=1">
+       	<meta name="description" content="a site i made using the sinatra framework">
+       	<meta name="author" content="Parker Griep">
+		
+		<!--Bootstrap CSS-->
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+		<!--Custom Fonts-->
+		<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
+		<!--Custom CSS-->
+		<link href="/css/style.css" rel="stylesheet">
+		<!--Custom JS-->
+		<script language="javascript" type="text/javascript">
+			function catalog() {
+   				document.getElementById('search_movies_list').style.display = "none";
+   				document.getElementById('search_movies_catalog').style.display = "block";
+			}
+
+			function list() {
+   				document.getElementById('search_movies_list').style.display = "block";
+   				document.getElementById('search_movies_catalog').style.display = "none";
+			}
+		</script>
+	</head>
+	<body>
+		
+		<div class="wrapper">
+            <div class="flash">
+                <% ['notice', 'error', 'alert'].each do |message| %>
+                    <% if flash[message.to_sym] %>
+                        <div id="flash-notice">
+                            <h5> <%= flash[message.to_sym] %> </h5>
+                        </div>
+                    <% end %>
+                <% end %>
+            </div>
+			<div class="all">
+			 <%= yield %>
+            </div>
+		</div>
+		
+	</body>

@@ -1,0 +1,52 @@
+<header>
+	
+	<div>
+		<div id="search_head">
+			<h1>Search for a movie</h1>
+			<form id="search" action="/search" method="post">
+				<input type="search" name="query" class="search_bar">
+				<input type="submit" style="display:none;"/>
+			</form>
+		</div>
+		<div id="session_info">
+            <% if session[:user_id] %>
+            <% me = User.find(session[:user_id]) %>
+                <div id="logged_in">
+                    <h2><a id="user_link" href="/users/<%= me.id %>"><%= me.username %></a>/<a id="logout_link" href="/logout">Logout</a></h2>
+                </div>
+            <% else %>
+                <div id="logged_out">
+                    <h1><a class="user_link" href="/login">Log In</a>/<a class="user_link" href="/signup">Sign Up</a></h1>
+                </div>
+            <% end %>
+		</div>
+	</div>
+	
+	
+	
+	<nav id="horz-nav">
+		<ul id="links">
+			<li>
+				<a href="/now_playing">Now Playing</a>
+			</li>
+			<li>
+				<a href="/popular">Popular</a>
+			</li>
+			<li>
+				<a href="/upcoming">Upcoming</a>
+			</li>
+			<li>
+				<a href="/top_rated">Top Rated</a>
+			</li>
+		</ul>
+		<ul id="view">
+			<li>
+				<button id='list_button' onClick="list()">List</button>
+			</li>
+			<li>
+				<button id="catalog_button" onClick="catalog()">Catalog</button>
+			</li>
+		</ul>
+	</nav>
+	
+</header>
