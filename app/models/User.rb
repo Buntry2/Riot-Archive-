@@ -1,8 +1,7 @@
 require 'bcrypt'
 
 class User < ActiveRecord::Base
-    has_many :reviews
-    has_many :votes
+    has_many :games
     
     include BCrypt
 
@@ -22,7 +21,7 @@ class User < ActiveRecord::Base
 end
 
 if User.count == 0
-    user = User.new(username: "admin")
+  user = User.new(username: "admin")
     user.password = "admin"
     user.save
 end

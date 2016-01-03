@@ -14,15 +14,15 @@ class ApplicationController < Sinatra::Base
     helpers Sinatra::RedirectWithFlash
     
 	enable :sessions
-    set :session_secret, "banana"
+    set :session_secret, "RT99"
 
 	configure do
 		set :public_folder, 'public'
 		set :views, 'app/views'
-
-		Tmdb::Api.key("9700bb0192b8a83fb4c9e8890ee34f15")
-		CONFIG = Tmdb::Configuration.new
 	end
+    
+    Vigor.configure("017516d9-10e6-4637-bb23-81f8f5cd9397")
+    HEX = Vigor.summoner("Hexaflexagon")
 
 	get "/" do
         erb :header

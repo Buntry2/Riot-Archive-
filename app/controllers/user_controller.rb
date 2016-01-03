@@ -33,6 +33,7 @@ class ApplicationController < Sinatra::Base
     post '/login' do
         # Searches the database to find a user with the same username
         user = User.find_by(username: params[:username])
+        
         # Checks to see if the user exists AND if the user has the same password
         #    If it succeeds, then a session with the user's id will be created
         #    Otherwise, it will redirect back to the default page
