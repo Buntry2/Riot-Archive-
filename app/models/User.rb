@@ -1,7 +1,7 @@
 require 'bcrypt'
 
 class User < ActiveRecord::Base
-    has_many :games
+    has_many :matches, :through => :user_matches
     
     include BCrypt
 

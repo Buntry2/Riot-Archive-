@@ -10,7 +10,9 @@ gem "rake"
 gem 'require_all'
 gem 'warden'
 gem 'bcrypt-ruby'
-gem 'vigor'
+gem 'ruby-lol'
+gem 'sinatra-contrib'
+gem 'timers'
 
 group :development do
   gem "pry"

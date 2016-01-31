@@ -1,0 +1,67 @@
+<%= erb :header %>
+<div id="game_index">
+    <div id="game_list">
+        <table id="game_list">
+            <tr id="game_header">
+                <th>Date</th>
+                <th>Outcome</th>
+                <th>Champion</th>
+                <th>Kills</th>
+                <th>Deaths</th>
+                <th>Assists</th>
+                <th>KDA</th>
+                <th>Creep Score</th>
+                <th>Gold Earned</th>
+                <th>Damage Given</th>
+                <th>Damage per Gold</th>
+            </tr>
+            <% if @games %>
+                <% @games.each do |game| %>
+                    <tr class="game_object     <% if game.outcome %>
+                                                    <%= "win" %>
+                                                <% else %>
+                                                <%= "loss" %>
+                                                <% end %>       ">
+                        <td class="date">
+                            <%= game.date %>
+                        </td>
+                        <td class="outcome">
+                            <% if game.outcome %>
+                                <%= "Win" %>
+                            <% else %>
+                                <%= "Loss" %>
+                            <% end %>
+                        </td>
+                        <td class="champion">
+                            <%= game.champion %>
+                        </td>
+                        <td class="kills">
+                            <%= game.kills %>
+                        </td>
+                        <td class="deaths">
+                            <%= game.deaths || 0 %>
+                        </td>
+                        <td class="assists">
+                            <%= game.assists %>
+                        </td>
+                        <td class="kda">
+                            <%= (game.kda).round(3) %>
+                        </td>
+                        <td class="cs">
+                            <%= game.cs %>
+                        </td>
+                        <td class="ge">
+                            <%= (game.ge).round(0) %>
+                        </td>
+                        <td class="dg">
+                            <%= (game.dg).round(0) %>
+                        </td>
+                        <td class="dpg">
+                            <%= (game.dpg).round(4) %>
+                        </td>
+                    </tr>
+                <% end %>
+            <% end %>
+        </table>
+    </div>
+</div>

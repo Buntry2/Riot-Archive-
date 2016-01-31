@@ -1,0 +1,10 @@
+function loadGameData(){
+    $.ajax({ 
+            url: "https://riotarchive-buntry.c9users.io/game_data.json", 
+            dataType: "json",
+            success: function(data){
+                return data;
+            }
+        }
+    )
+}

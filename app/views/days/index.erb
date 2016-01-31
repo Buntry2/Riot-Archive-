@@ -1,0 +1,46 @@
+<head>
+    <script type="text/javascript">
+      window.onload = function () {
+        
+        var days = <%= @days.to_json %>;
+        
+        var points = [];
+        
+        for (var i in days){
+          points.push({
+            x: new Date(days[i].date + " 2016"), 
+            y: days[i].score, 
+            division: days[i].division, 
+            lp: days[i].lp })
+        }
+        
+        var chart = new CanvasJS.Chart("chart",
+        {
+          theme: "theme1",
+          title:{
+            text: "Season 6 Progression"
+          },
+          animationEnabled: true,
+          axisX: {
+            valueFormatString: "MMM",
+            interval:1,
+            intervalType: "day"
+          },
+          axisY:{
+            includeZero: false
+          },
+          data: [{        
+            type: "line",
+            toolTipContent: "{division} - {lp} lp <br/> {x}",
+            lineThickness: 4,        
+            dataPoints: points
+          }]
+        });
+    
+    chart.render();
+    }
+    </script>
+</head>
+<div class="day_index">
+    <div id="chart" style="height: 100vh; width: 100vw;"></div>
+</div>
