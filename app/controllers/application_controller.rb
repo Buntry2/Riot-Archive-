@@ -4,7 +4,6 @@ require 'sinatra/activerecord'
 require 'sinatra/flash'
 require 'sinatra/redirect_with_flash'
 require "sinatra/json"
-require 'pry'
 require 'lol'
 
 require_relative "../../config/environment"
