@@ -12,7 +12,6 @@ gem 'warden'
 gem 'bcrypt-ruby'
 gem 'ruby-lol'
 gem 'sinatra-contrib'
-gem 'timers'
 
 group :development do
   gem "pry"
@@ -23,5 +22,4 @@ end
 
 group :production do
   gem "pg"
-  gem "shotgun"
 end
