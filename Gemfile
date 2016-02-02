@@ -20,3 +20,8 @@ group :development do
   gem "tux"
   gem "sqlite3"
 end
+
+group :production do
+  gem "pg"
+  gem "shotgun"
+end

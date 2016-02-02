@@ -109,7 +109,7 @@ class ApplicationController < Sinatra::Base
 					date: m.date,
 					lp: lp,
 					division: division,
-					score: score_1 + score_2
+					score: score_1 + score_2 + lp
 					)
 				d.save
 			end

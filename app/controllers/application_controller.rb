@@ -29,4 +29,8 @@ class ApplicationController < Sinatra::Base
         redirect "/ranked"
 	end
 	
+	get '/butt' do
+		erb :butt
+	end
+	
 end

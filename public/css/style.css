@@ -2,7 +2,7 @@ table, h1, form {
     margin: 5px;
 }
 
-table, th, td {
+table, tr {
     border: 2px solid black;
 }
 
@@ -11,9 +11,8 @@ th, td {
     text-align: center;
 }
 
-#game_header {
+#game_header, #summoner_handle {
     background-color: #99ddff;
-    position: static;
 }
 
 .win {
@@ -30,14 +29,79 @@ th, td {
 }
 
 #page_header *{
-    display: inline;
+    display: inline-block;
     padding-right: 10px;
 }
 
 #game_index {
-    width: 60%;
+    width: 60vw;
 }
 
 #game_list {
-    width: 100%;
+    width: 60vw;
+    margin: 5px;
+}
+
+#load {
+    float: right;
+    margin-bottom: 20px;
+}
+
+#glory {
+    height: 100vh;
+}
+
+#page_content > div{
+    display: inline-block;
+}
+
+#game_calculations {
+    float: right;
+    
+    margin-top: 5px;
+    margin-right: 20px;
+}
+
+#reset {
+    border: none;
+    background: none;
+}
+
+#recent_game_stats {
+    text-align: center;
+}
+
+#recent_game_stats > div {
+    display: inline-block;
+}
+
+#rg_content {
+    border: 2px black solid;
+}
+
+#rg_slider_box {
+    text-align: center;
+}
+
+#rg_slider {
+    float: right;
+    height: 200px;
+    margin-right: 10px;
+}
+
+#rg_num {
+    width: auto;
+    text-align: right;
+    
+    border: none;
+    background: none;
+    
+    margin-bottom: 15px;
+    margin-right: 10px;
+}
+
+#summoner_name {
+    margin: 0;
+    padding: 5px;
+    font-size: 55px;
 }
