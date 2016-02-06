@@ -1,3 +1,7 @@
+body {
+    background-color: beige;
+}
+
 table, h1, form {
     margin: 5px;
 }
@@ -71,22 +75,22 @@ th, td {
     text-align: center;
 }
 
-#recent_game_stats > div {
-    display: inline-block;
-}
-
 #rg_content {
     border: 2px black solid;
+    background-color: white;   
 }
 
 #rg_slider_box {
     text-align: center;
+    margin-top: 10px;
 }
 
 #rg_slider {
-    float: right;
-    height: 200px;
-    margin-right: 10px;
+    width: 300px;
+}
+
+#rg_slider_box > div {
+    display: inline-block;
 }
 
 #rg_num {
@@ -95,13 +99,42 @@ th, td {
     
     border: none;
     background: none;
-    
-    margin-bottom: 15px;
-    margin-right: 10px;
 }
 
 #summoner_name {
     margin: 0;
-    padding: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
     font-size: 55px;
+}
+
+#recent_game_table {
+    border: none;
+    margin: 15px;
+}
+
+#recent_game_table > div {
+    border: none;
+    margin-top: 10px;
+}
+
+#average_kda_box > div {
+    display: inline-block;
+}
+
+#average_kda, #wl {
+    text-align: center;
+    font-size: 25px;
+}
+
+#a_kda, #wlr {
+    font-size: 30px;
+}
+
+#kda_poc {
+    margin-left: 5px;
+}
+
+#wlr {
+    margin-bottom: 10px;
 }

@@ -13,13 +13,13 @@ gem 'bcrypt-ruby'
 gem 'ruby-lol'
 gem 'sinatra-contrib'
 
-group :development do
-  gem "pry"
-  gem "shotgun"
-  gem "tux"
-  gem "sqlite3"
-end
+# group :development do
+#   gem "pry"
+#   gem "shotgun"
+#   gem "tux"
+#   gem "sqlite3"
+# end
 
-group :production do
+group :development, :production do
   gem "pg"
 end

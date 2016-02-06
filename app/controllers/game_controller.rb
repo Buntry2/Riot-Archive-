@@ -128,6 +128,7 @@ class ApplicationController < Sinatra::Base
 	end
 	
 	get '/normal' do
+		# Games equal all games from db where game is normal
 		@games = Match.where(:mode => 1).to_a.reverse
 	
 		erb :"games/index"

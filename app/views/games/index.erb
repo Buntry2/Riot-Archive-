@@ -79,7 +79,7 @@
                //hides row and adds it to table
                $(row).hide();
                table.appendChild(row);
-           })
+           });
            
             $(".game_object").slice(0, 19).show();
             $("#load").click(function(e){ 
@@ -90,18 +90,95 @@
                 }
             });
             
+            //Get Slider info
+            var getSlider = function(){
+                return $("#rg_slider").slider("value");
+            }
+            
+            var rgValue = function(x){
+                var tkills = 0;
+                var tdeaths = 0;
+                var tassists = 0;
+                var twins = 0;
+                var tlosses = 0;
+                
+                games.slice(0, x).forEach( function(game){
+                    tkills += game.kills;
+                    tdeaths += game.deaths;
+                    tassists += game.assists;
+                    
+                    if(game.outcome){
+                        twins += 1;
+                    } else {
+                        tlosses += 1;
+                    }
+                });
+                var tgames = twins + tlosses;
+                
+                var kda;
+                if (tdeaths == 0) {
+                    kda = tkills + tassists;
+                } else {
+                    kda = (tkills + tassists) / tdeaths;
+                }
+                
+                return {
+                        wins: twins,
+                        losses: tlosses,
+                        total: tgames,
+                        wlr: twins / tlosses,
+                        
+                        kills: tkills,
+                        akills: tkills / tgames,
+                        deaths: tdeaths,
+                        adeaths: tdeaths / tgames,
+                        assists: tassists,
+                        aassists: tassists / tgames,
+                        kda: kda
+                };
+            }
+            var kda = rgValue(games.length).kda
+            
+            //Recent Games Tab
+            var updateRG = function(x){
+                data = rgValue(x);
+                
+                $("#average_kda").empty();
+                $("#average_kda").append( "<div>" + data.akills.toFixed(2) + " / " + data.adeaths.toFixed(2) + " / " + data.aassists.toFixed(2) + "</div>");
+                
+                $("#a_kda").empty();
+                $("#a_kda").append("<div>" + data.kda.toFixed(2) + " KDA</div>");
+                
+                $("#kda_poc").empty();
+                $("#kda_poc").append("<div>" + (((data.kda - kda)/kda) * 100).toFixed(2) + "%</div>").css("color", function(){
+                    if ((data.kda - kda)/kda * 100 > 0) {
+                        return "forestgreen";
+                    } else {
+                        return "darkred";
+                    }
+                })
+                
+                $("#wl").empty();
+                $("#wl").append("<div>" + "G" + data.total + "   W" + data.wins + "  L" + data.losses + "</div>");
+                
+                $("#wlr").empty();
+                $("#wlr").append("<div>" + data.wlr.toFixed(2) + " W/L" + "</div>");
+            }
+            
             //ALL SLIDER STUFF
             $("#rg_slider").slider({
-                orientation: "vertical",
                 range: "min",
                 min: 1,
                 max: games.length,
                 value: games.length,
                 slide: function(event, ui){
                     $("#rg_num").val( ui.value );
+                    updateRG(ui.value);
+                    console.log("trying to change val");
                 }
             });
             $("#rg_num").val( $("#rg_slider").slider("value") );
+            updateRG();
             
             //ALL DRAGGABLE STUFF
             $("#game_index").draggable({
